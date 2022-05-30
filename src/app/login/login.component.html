@@ -1,0 +1,19 @@
+<div class="card-login">
+    <div class="form-signin login-dark">
+        <form #login="ngForm" (ngSubmit)="logar(login.value)" ngNativeValidate>
+            <h3 class="mb-3 text-center">Fazer login</h3>
+            <div>
+                <label for="email">E-mail</label>
+                <input id="email" class="form-control" type="email" [(ngModel)]="email" name="email" required>
+                <label for="password">Senha</label>
+                <input id="password" class="form-control mb-3" type="password" [(ngModel)]="password" name="password" minlength="8" maxlength="16" required>
+                <a class="text-decoration-none text-muted" routerLink="/login">Esqueci a senha</a>
+            </div>
+            <div class="d-flex flex-column">
+                <button class="btn btn-lg btn-outline-primary mb-2">Entrar</button>
+                <button class="btn btn-lg btn-outline-info mb-2" routerLink="/cadastrar" formnovalidate>Cadastre-se</button>
+                <button class="btn btn-lg btn-outline-light" routerLink="/" formnovalidate>Voltar</button>
+            </div>
+        </form>
+    </div>
+</div>

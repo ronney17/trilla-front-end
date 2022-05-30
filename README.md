@@ -1,6 +1,14 @@
-# TrillaFront
+# Trilla Front-end
+**Projeto em desenvolvimento.**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+Projeto desenvolvido utilizando [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+
+## 📋 Pré-requisitos
+
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+
+* Você instalou a versão mais recente de [nodeJS](https://nodejs.org/en)
+* Necessário a [api-ecommerce](https://github.com/ronney17/api-ecommerce) para o back-end
 
 ## Development server
 
