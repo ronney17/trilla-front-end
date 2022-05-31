@@ -1,18 +1,39 @@
 <div class="card-login">
     <div class="form-signin login-dark">
         <form #login="ngForm" (ngSubmit)="logar(login.value)" ngNativeValidate>
-            <h3 class="mb-3 text-center">Fazer login</h3>
-            <div>
-                <label for="email">E-mail</label>
-                <input id="email" class="form-control" type="email" [(ngModel)]="email" name="email" required>
-                <label for="password">Senha</label>
-                <input id="password" class="form-control mb-3" type="password" [(ngModel)]="password" name="password" minlength="8" maxlength="16" required>
-                <a class="text-decoration-none text-muted" routerLink="/login">Esqueci a senha</a>
+            <h3 class="mb-3 text-center">{{title}}</h3>
+            <div class="mb-3">
+                <div *ngIf="showChangePsw == false">
+                    <label for="email">{{emailTitle}}</label>
+                    <input id="email" class="form-control" type="email" [(ngModel)]="email" name="email" required>
+                </div>
+                <label for="password" *ngIf="showForgotPsw == false">Senha</label>
+                <div class="input-group" *ngIf="showForgotPsw == false">
+                    <input id="password" class="form-control" type="{{sPsw}}" [(ngModel)]="password" name="password"
+                        minlength="8" maxlength="16" aria-describedby="show-psw" required>
+                    <span type="button" (click)="showPsw()">
+                        <span id="show-psw" class="material-icons input-group-text"
+                            *ngIf="mostrarSenha">visibility</span>
+                        <span id="show-psw" class="material-icons input-group-text"
+                            *ngIf="mostrarSenha == false">visibility_off</span>
+                    </span>
+                </div>
+                <a class="text-decoration-none text-muted" routerLink="/login"
+                    *ngIf="showForgotPsw == false && showChangePsw == false" (click)="forgotPswForm()">Esqueci a
+                    senha</a>
+                <br *ngIf="showForgotPsw == false">
+                <span *ngIf="msg != null" class="text-info">{{ msg }}</span>
             </div>
             <div class="d-flex flex-column">
-                <button class="btn btn-lg btn-outline-primary mb-2">Entrar</button>
-                <button class="btn btn-lg btn-outline-info mb-2" routerLink="/cadastrar" formnovalidate>Cadastre-se</button>
-                <button class="btn btn-lg btn-outline-light" routerLink="/" formnovalidate>Voltar</button>
+                <button class="btn btn-lg btn-outline-primary mb-2"
+                    *ngIf="showForgotPsw == false && showChangePsw == false">Entrar</button>
+                <button class="btn btn-lg btn-outline-primary mb-2" type="button" *ngIf="showForgotPsw"
+                    (click)="forgotPsw()">Enviar</button>
+                <button class="btn btn-lg btn-outline-primary mb-2" type="button" *ngIf="showChangePsw"
+                    (click)="changePsw()">Enviar</button>
+                <button class="btn btn-lg btn-outline-info mb-2" type="button" routerLink="/cadastrar"
+                    *ngIf="showChangePsw == false">Cadastre-se</button>
+                <button class="btn btn-lg btn-outline-light" type="button" routerLink="/">Voltar</button>
             </div>
         </form>
     </div>
