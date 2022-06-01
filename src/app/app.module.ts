@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { Routes, RouterModule } from '@angular/router';
+import { RegistrationComponent } from './registration/registration.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'change-password/:token', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
   // { path: 'cadastro', component: CadastroComponent, canActivate: [LoggedInAuthGuard] },
   // { path: 'carrinho', component: CarrinhoComponent },
   // { path: 'alterar-cadastro', component: AlterarCadastroComponent, canActivate: [AuthGuard] },
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,52 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
+<div class="container">
+    <div class="register-dark form-register">
+        <article class="card-body mx-auto">
+            <h4 class="card-title mt-3 text-center">Cadastro</h4>
+            <p class="text-center">Crie sua conta no Trilla e-commerce e aproveite milhares de produtos.</p>
+
+            <form #registration="ngForm" (ngSubmit)="register(registration.value)" ngNativeValidate>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="material-icons">person</i></span>
+                    </div>
+                    <input name="name" class="form-control" placeholder="Nome completo" type="text" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="material-icons">email</i></span>
+                    </div>
+                    <input name="email" class="form-control" placeholder="Email" type="email" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="material-icons">phone</i></span>
+                    </div>
+                    <input name="telephone" class="form-control" placeholder="(11) 99999-9999" type="text" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="material-icons">today</i></span>
+                    </div>
+                    <input name="birthDate" class="form-control" placeholder="Data de nascimento" type="text"
+                        onfocus="(this.type='date')" required>
+                </div>
+                <!-- form-group end.// -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="material-icons">lock</i></span>
+                    </div>
+                    <input name="password" class="form-control" placeholder="Digite uma senha" type="password" minlength="8" maxlength="16" aria-describedby="show-psw" required>
+                </div>
+                <div class="d-flex flex-column">
+                    <button type="submit" class="btn btn-outline-primary mb-2">Criar conta</button>
+                    <p class="text-center">Já tem uma conta? <a routerLink="/login">Log In</a></p>
+                </div>
+            </form>
+        </article>
+    </div>
+</div>
