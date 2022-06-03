@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'change-password/:token', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'account', component: RegistrationComponent },
   // { path: 'cadastro', component: CadastroComponent, canActivate: [LoggedInAuthGuard] },
   // { path: 'carrinho', component: CarrinhoComponent },
   // { path: 'alterar-cadastro', component: AlterarCadastroComponent, canActivate: [AuthGuard] },

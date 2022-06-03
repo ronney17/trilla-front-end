@@ -11,21 +11,26 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">person</i></span>
                     </div>
-                    <input name="name" class="form-control" placeholder="Nome completo" type="text" required>
+                    <input name="name" class="form-control" placeholder="Nome completo" type="text" [(ngModel)]="name" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="cpf" class="form-control" placeholder="CPF" type="text" minlength="11" maxlength="11" [(ngModel)]="cpf"
+                        required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">email</i></span>
                     </div>
-                    <input name="email" class="form-control" placeholder="Email" type="email" required>
+                    <input name="email" class="form-control" placeholder="Email" type="email" [(ngModel)]="email" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="material-icons">phone</i></span>
                     </div>
-                    <input name="telephone" class="form-control" placeholder="(11) 99999-9999" type="text" required>
+                    <input name="phone" class="form-control" placeholder="(11) 99999-9999" type="tel" [(ngModel)]="phone" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
@@ -33,17 +38,61 @@
                         <span class="input-group-text"> <i class="material-icons">today</i></span>
                     </div>
                     <input name="birthDate" class="form-control" placeholder="Data de nascimento" type="text"
-                        onfocus="(this.type='date')" required>
+                        onfocus="(this.type='date')" [(ngModel)]="birthDate" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group d-flex flex-nowrap mb-3">
+                    <input name="cep" class="form-control" placeholder="CEP" type="text" [(ngModel)]="cep" required>
+                    <div class="ms-1">
+                        <button type="button" class="btn btn-outline-success form-control ms-1" (click)="pesquisaCep()" formnovalidate>Buscar</button>
+                    </div>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="street" class="form-control" placeholder="Rua" type="tel" [(ngModel)]="street" [readonly]="true"
+                        required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="number" class="form-control" placeholder="Número" type="text" [(ngModel)]="number" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="neighborhood" class="form-control" placeholder="Bairro" type="text"
+                        [(ngModel)]="neighborhood" [readonly]="true" required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="city" class="form-control" placeholder="Cidade" type="text" [(ngModel)]="city" [readonly]="true"
+                        required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="state" class="form-control" placeholder="Estado" type="text" [(ngModel)]="state" [readonly]="true"
+                        required>
+                </div>
+                <!-- form-group// -->
+                <div class="input-group mb-3">
+                    <input name="complement" class="form-control" placeholder="Complemento" type="text" [(ngModel)]="complement">
                 </div>
                 <!-- form-group end.// -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="material-icons">lock</i></span>
                     </div>
-                    <input name="password" class="form-control" placeholder="Digite uma senha" type="password" minlength="8" maxlength="16" aria-describedby="show-psw" required>
+                    <input name="password" class="form-control" placeholder="Digite uma senha" type="{{sPsw}}"
+                        minlength="8" maxlength="16" aria-describedby="show-psw" [(ngModel)]="password" required>
+                    <span type="button" (click)="showPsw()">
+                        <span id="show-psw" class="material-icons input-group-text"
+                            *ngIf="mostrarSenha">visibility</span>
+                        <span id="show-psw" class="material-icons input-group-text"
+                            *ngIf="mostrarSenha == false">visibility_off</span>
+                    </span>
                 </div>
                 <div class="d-flex flex-column">
-                    <button type="submit" class="btn btn-outline-primary mb-2">Criar conta</button>
+                    <span *ngIf="msg != null" class="text-info">{{ msg }}</span>
+                    <button class="btn btn-outline-primary mb-2"  *ngIf="showUpdateBtn == false">Criar conta</button>
+                    <button class="btn btn-outline-success mb-2" type="button" *ngIf="showUpdateBtn == true" (click)="updateAccount(registration.value)">Atualizar Cadastro</button>
                     <p class="text-center">Já tem uma conta? <a routerLink="/login">Log In</a></p>
                 </div>
             </form>
