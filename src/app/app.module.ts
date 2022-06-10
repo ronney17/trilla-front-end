@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
+import { ProductsComponent } from './products/products.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxMaskModule } from 'ngx-mask'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,14 +35,19 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
+    NgxPaginationModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: true // ao salvar, vai manter a mascara
+    }),
   ],
-  providers: [],
+  providers: [BrowserModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

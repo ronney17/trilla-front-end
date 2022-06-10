@@ -18,8 +18,6 @@ export class RegistrationComponent implements OnInit {
     if (this.route.url === '/account' && this.token !== '') {
       this.showUpdateBtn = true;
       this.myAccount();
-    }else{
-      this.route.navigate(['/']);
     }
   }
 

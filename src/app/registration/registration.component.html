@@ -15,7 +15,7 @@
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="cpf" class="form-control" placeholder="CPF" type="text" minlength="11" maxlength="11" [(ngModel)]="cpf"
+                    <input name="cpf" class="form-control" placeholder="CPF" type="text" minlength="11" maxlength="11" [(ngModel)]="cpf" mask="000.000.000-00"
                         required>
                 </div>
                 <!-- form-group// -->
@@ -38,7 +38,7 @@
                         <span class="input-group-text"> <i class="material-icons">today</i></span>
                     </div>
                     <input name="birthDate" class="form-control" placeholder="Data de nascimento" type="text"
-                        onfocus="(this.type='date')" [(ngModel)]="birthDate" required>
+                        onfocus="(this.type='date')" [(ngModel)]="birthDate" [ngModel]="birthDate | date:'dd/MM/yyyy'" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group d-flex flex-nowrap mb-3">
