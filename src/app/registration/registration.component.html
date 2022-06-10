@@ -11,26 +11,29 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">person</i></span>
                     </div>
-                    <input name="name" class="form-control" placeholder="Nome completo" type="text" [(ngModel)]="name" required>
+                    <input name="name" class="form-control" placeholder="Nome completo" type="text" [(ngModel)]="name"
+                        required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="cpf" class="form-control" placeholder="CPF" type="text" minlength="11" maxlength="11" [(ngModel)]="cpf" mask="000.000.000-00"
-                        required>
+                    <input name="cpf" class="form-control" placeholder="CPF" type="text" [(ngModel)]="cpf"
+                        mask="000.000.000-00" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">email</i></span>
                     </div>
-                    <input name="email" class="form-control" placeholder="Email" type="email" [(ngModel)]="email" required>
+                    <input name="email" class="form-control" placeholder="Email" type="email" [(ngModel)]="email"
+                        required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="material-icons">phone</i></span>
                     </div>
-                    <input name="phone" class="form-control" placeholder="(11) 99999-9999" type="tel" [(ngModel)]="phone" required>
+                    <input name="phone" class="form-control" placeholder="(11) 90000-0000" type="tel"
+                        [(ngModel)]="phone" prefix="+55 " mask="(00) 00000-0000" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
@@ -38,23 +41,25 @@
                         <span class="input-group-text"> <i class="material-icons">today</i></span>
                     </div>
                     <input name="birthDate" class="form-control" placeholder="Data de nascimento" type="text"
-                        onfocus="(this.type='date')" [(ngModel)]="birthDate" [ngModel]="birthDate | date:'dd/MM/yyyy'" required>
+                        [(ngModel)]="birthDate" mask="00/00/0000" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group d-flex flex-nowrap mb-3">
-                    <input name="cep" class="form-control" placeholder="CEP" type="text" [(ngModel)]="cep" required>
+                    <input name="cep" class="form-control" placeholder="CEP" type="text" [(ngModel)]="cep" mask="00000-000" required>
                     <div class="ms-1">
-                        <button type="button" class="btn btn-outline-success form-control ms-1" (click)="pesquisaCep()" formnovalidate>Buscar</button>
+                        <button type="button" class="btn btn-outline-success form-control ms-1" (click)="pesquisaCep()"
+                            formnovalidate>Buscar</button>
                     </div>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="street" class="form-control" placeholder="Rua" type="tel" [(ngModel)]="street" [readonly]="true"
-                        required>
+                    <input name="street" class="form-control" placeholder="Rua" type="tel" [(ngModel)]="street"
+                        [readonly]="true" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="number" class="form-control" placeholder="Número" type="text" [(ngModel)]="number" required>
+                    <input name="number" class="form-control" placeholder="Número" type="text" [(ngModel)]="number"
+                        required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
@@ -63,17 +68,18 @@
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="city" class="form-control" placeholder="Cidade" type="text" [(ngModel)]="city" [readonly]="true"
-                        required>
+                    <input name="city" class="form-control" placeholder="Cidade" type="text" [(ngModel)]="city"
+                        [readonly]="true" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="state" class="form-control" placeholder="Estado" type="text" [(ngModel)]="state" [readonly]="true"
-                        required>
+                    <input name="state" class="form-control" placeholder="Estado" type="text" [(ngModel)]="state"
+                        [readonly]="true" required>
                 </div>
                 <!-- form-group// -->
                 <div class="input-group mb-3">
-                    <input name="complement" class="form-control" placeholder="Complemento" type="text" [(ngModel)]="complement">
+                    <input name="complement" class="form-control" placeholder="Complemento" type="text"
+                        [(ngModel)]="complement">
                 </div>
                 <!-- form-group end.// -->
                 <div class="input-group mb-3">
@@ -91,8 +97,9 @@
                 </div>
                 <div class="d-flex flex-column">
                     <span *ngIf="msg != null" class="text-info">{{ msg }}</span>
-                    <button class="btn btn-outline-primary mb-2"  *ngIf="showUpdateBtn == false">Criar conta</button>
-                    <button class="btn btn-outline-success mb-2" type="button" *ngIf="showUpdateBtn == true" (click)="updateAccount(registration.value)">Atualizar Cadastro</button>
+                    <button class="btn btn-outline-primary mb-2" *ngIf="showUpdateBtn == false">Criar conta</button>
+                    <button class="btn btn-outline-success mb-2" type="button" *ngIf="showUpdateBtn == true"
+                        (click)="updateAccount(registration.value)">Atualizar Cadastro</button>
                     <p class="text-center">Já tem uma conta? <a routerLink="/login">Log In</a></p>
                 </div>
             </form>
