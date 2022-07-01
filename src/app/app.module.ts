@@ -7,13 +7,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProductsComponent } from './products/products.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
+import { ActivateComponent } from './activate/activate.component'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'change-password/:token', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'account', component: RegistrationComponent },
+  { path: 'user/activate/:token', component: ActivateComponent },
   // { path: 'cadastro', component: CadastroComponent, canActivate: [LoggedInAuthGuard] },
   // { path: 'carrinho', component: CarrinhoComponent },
   // { path: 'alterar-cadastro', component: AlterarCadastroComponent, canActivate: [AuthGuard] },
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegistrationComponent,
     ProductsComponent,
+    ActivateComponent,
   ],
   imports: [
     BrowserModule,

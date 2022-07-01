@@ -1,18 +1,18 @@
-/* .card-login {
-    background-color: turquoise;
-    background-size: cover;
-} */
+.card-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
 
 .login-dark {
     background-color: #080427;
     border-radius: 8px;
     color: #fff;
-    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 6px 6px 8px rgba(158, 106, 106, 0.2);
 }
 
 .form-signin {
     max-width: 20rem;
-    padding: 1rem;
-    margin-top: 10%;
-    margin-left: 40%;
+    padding: 1rem; 
 }

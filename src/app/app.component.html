@@ -1,34 +1,64 @@
 <!-- Menu -->
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container d-flex justify-content-around align-items-center">
       <a class="navbar-brand" routerLink="/">Trilla</a>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Busque seu produto" aria-label="Search">
-      </form>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+      <div class="d-flex">
+        <input
+          class="form-control me-2 dropdown-toggle"
+          type="text"
+          placeholder="Busque seu produto"
+          aria-label="Search"
+          (keyup)="buscarJogosPeloNome()"
+          id="dropdownMenuSearch"
+          data-bs-toggle="dropdown"
+          [(ngModel)]="nomeJogoPesquisado"
+        />
+        <ul id="list" class="dropdown-menu dropdown-busca" aria-labelledby="dropdownMenuSearch">
+          <li *ngFor="let product of products">
+            <a class="dropdown-item" href="/product/{{ product._id }}">{{ product.name }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/registration">Cadastre-se</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/account">Meus dados</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/about">Sobre</a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/" (click)="logout()">Sair</a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <div *ngIf="!logado">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/login">Log in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/registration">Cadastre-se</a>
+            </li>
+          </div>
+          <li class="nav-item dropdown" *ngIf="logado">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ name }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="#">Meus pedidos</a></li>
+              <li><a class="dropdown-item" routerLink="/account">Minha conta</a></li>
+              <li><a class="dropdown-item" (click)="logout()" href="/">Sair</a></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -36,14 +66,82 @@
   </nav>
 </header>
 
-<p>
-  /* To do
-  - Home page
-  - Product page
-  - Checkout page
-  */
-</p>
+<!-- <div>
+  <div class="d-flex align-items-center flex-wrap">
+    <p class="mx-4 bg">Computadores</p>
+    <p>Móveis</p>
+    <p>Eletroportáteis</p>
+    <p>Smartphones</p>
+  </div>
+</div> -->
+
+<div id="carouselMain" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselMain"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div
+      class="carousel-item active"
+      [ngClass]="{ active: primeiro }"
+      *ngFor="let product of products; first as primeiro"
+    >
+      <a class="d-flex justify-content-center" routerLink="/product/{{ product._id }}"
+        ><img src="{{ product.image }}" class="carousel-img" alt="carousel"
+      /></a>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div>
 
 <!-- Mostra o conteúdo do routerLink -->
 <router-outlet></router-outlet>
 <app-products></app-products>
+
+<!-- Footer -->
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <span class="material-icons bi" width="30" height="24">interests</span>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2022 Trilla, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3">
+        <a class="text-muted" href="#" target="_blank">
+          <img src="../assets/images/twitter.png" alt="twitter" width="24" height="24" />
+        </a>
+      </li>
+      <li class="ms-3">
+        <a class="text-muted" href="#" target="_blank"
+          ><img src="../assets/images/facebook.png" alt="facebook" width="24" height="24"
+        /></a>
+      </li>
+      <li class="ms-3">
+        <a class="text-muted" href="#" target="_blank"
+          ><img src="../assets/images/instagram.png" alt="instagram" width="24" height="24"
+        /></a>
+      </li>
+      <li class="ms-3">
+        <a class="text-muted" href="https://www.linkedin.com/in/roney-s-a8b463110/" target="_blank"
+          ><img src="../assets/images/linkedin.png" alt="linkedin" width="24" height="24"
+        /></a>
+      </li>
+    </ul>
+  </footer>
+</div>
